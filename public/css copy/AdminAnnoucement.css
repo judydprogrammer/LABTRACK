@@ -1,0 +1,4626 @@
+:root{
+    --navy:#0b1730;
+    --navy-soft:#12213f;
+    --navy-active:#1f3a6e;
+
+    --blue:#2f6fed;
+    --blue-soft:#eaf1ff;
+
+    --green:#1fa971;
+    --green-soft:#e5f8ee;
+
+    --orange:#e8901c;
+    --orange-soft:#fdf1de;
+
+    --red:#e6493f;
+    --red-soft:#fdeae8;
+
+    --purple:#7c5cf0;
+    --purple-soft:#f0ecfe;
+
+    --ink:#111827;
+    --ink-soft:#6b7280;
+
+    --line:#eef0f4;
+    --bg:#f5f6f9;
+    --card:#ffffff;
+
+    --radius:16px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:'Inter', system-ui, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+ul{
+    list-style:none;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.app{
+    display:flex;
+    min-height:100vh;
+}
+
+.main{
+    flex:1;
+    min-width:0;
+}
+
+  /* ---------- SIDEBAR ---------- */
+  .sidebar{
+    width:258px;
+    flex-shrink:0;
+    background:var(--navy);
+    color:#cdd6ea;
+    display:flex;
+    flex-direction:column;
+    padding:26px 16px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+  }
+  .brand{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:6px 8px 24px;
+    margin-bottom:18px;
+  }
+ .brand-badge img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+  .brand h1{ font-size:19px; font-weight:800; color:#fff; letter-spacing:0.5px; }
+  .brand p{ font-size:11px; color:#8a96b3; margin-top:2px; }
+  .nav-label{
+    font-size:11px; font-weight:700; letter-spacing:0.08em;
+    color:#5c6a8c; margin:18px 10px 8px;
+  }
+  .nav-item{
+    display:flex; align-items:center; gap:12px;
+    width:100%;
+    padding:10px 12px;
+    border-radius:10px;
+    font-size:13.5px; font-weight:500;
+    color:#c3ccdf;
+    margin-bottom:2px;
+    cursor:pointer;
+    border:none; background:transparent;
+    text-align:left;
+    transition:background .15s, color .15s;
+    position:relative;
+  }
+  .nav-item i{ width:18px; text-align:center; font-size:15px; }
+  .nav-item:hover{ background:rgba(255,255,255,0.06); color:#fff; }
+  .nav-item.active{
+    background:var(--navy-active);
+    color:#fff;
+    box-shadow: inset 3px 0 0 var(--blue);
+  }
+  .nav-item .nav-badge{
+    margin-left:auto;
+    background:var(--red);
+    color:#fff;
+    font-size:10px; font-weight:700;
+    min-width:18px; height:18px;
+    border-radius:9px;
+    display:flex; align-items:center; justify-content:center;
+    padding:0 5px;
+  }
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar{
+    background:#fff;
+
+    border-bottom:1px solid var(--line);
+
+    padding:14px 32px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    position:sticky;
+    top:0;
+
+    z-index:20;
+}
+
+.topbar-left{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.hamburger{
+    width:38px;
+    height:38px;
+
+    border-radius:10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--bg);
+    color:var(--ink);
+
+    border:none;
+
+    font-size:16px;
+}
+
+.topbar h2{
+    font-size:18px;
+    font-weight:700;
+}
+
+
+/* =========================================================
+   TOPBAR RIGHT
+========================================================= */
+
+.topbar-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+
+/* ---------- SEARCH ---------- */
+
+.search-box{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    background:var(--bg);
+
+    border-radius:10px;
+
+    padding:9px 14px;
+
+    width:280px;
+
+    color:var(--ink-soft);
+
+    font-size:13px;
+}
+
+.search-box input{
+    border:none;
+    background:transparent;
+    outline:none;
+
+    font-size:13px;
+
+    width:100%;
+
+    font-family:inherit;
+}
+
+
+/* =========================================================
+   NOTIFICATIONS
+========================================================= */
+
+.notif-wrap{
+    position:relative;
+}
+
+.bell{
+    position:relative;
+
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--bg);
+    color:var(--ink-soft);
+
+    border:none;
+
+    font-size:15px;
+}
+
+.bell .dot{
+    position:absolute;
+
+    top:4px;
+    right:5px;
+
+    background:var(--red);
+    color:#fff;
+
+    font-size:9px;
+    font-weight:700;
+
+    width:15px;
+    height:15px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid #fff;
+}
+
+
+/* ---------- NOTIFICATION DROPDOWN ---------- */
+
+.notif-menu{
+    position:absolute;
+
+    top:calc(100% + 10px);
+    right:-40px;
+
+    width:320px;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    box-shadow:0 14px 34px rgba(15,25,60,0.16);
+
+    border:1px solid var(--line);
+
+    padding:10px;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(-6px);
+
+    transition:
+        opacity .15s ease,
+        transform .15s ease,
+        visibility .15s;
+
+    z-index:50;
+}
+
+.notif-wrap.open .notif-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.notif-menu-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:6px 8px 10px;
+
+    font-size:13.5px;
+    font-weight:700;
+
+    border-bottom:1px solid var(--line);
+
+    margin-bottom:6px;
+}
+
+.notif-menu-title span.link{
+    font-size:12px;
+    font-weight:600;
+    color:var(--blue);
+    cursor:pointer;
+}
+
+.notif-row{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+
+    padding:9px 8px;
+
+    border-radius:9px;
+
+    cursor:pointer;
+}
+
+.notif-row:hover{
+    background:var(--bg);
+}
+
+.notif-row .dot-icon{
+    width:32px;
+    height:32px;
+
+    border-radius:9px;
+
+    flex-shrink:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:13px;
+}
+
+.notif-row .r-title{
+    font-size:12.5px;
+    font-weight:600;
+}
+
+.notif-row .r-time{
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-top:2px;
+}
+
+.notif-row.unread{
+    background:#f7faff;
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile{
+    position:relative;
+}
+
+.profile-trigger{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    cursor:pointer;
+
+    padding:4px 6px 4px 4px;
+
+    border-radius:30px;
+
+    border:none;
+    background:transparent;
+
+    transition:background .15s;
+}
+
+.profile-trigger:hover,
+.profile.open .profile-trigger{
+    background:var(--bg);
+}
+
+.avatar{
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#3a5fe0,#7c5cf0);
+
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:700;
+    font-size:14px;
+
+    flex-shrink:0;
+}
+
+.profile-name{
+    line-height:1.25;
+    text-align:left;
+}
+
+.profile-name .name{
+    font-size:13.5px;
+    font-weight:700;
+}
+
+.profile-name .role{
+    font-size:11.5px;
+    color:var(--ink-soft);
+}
+
+.profile-trigger .chev{
+    font-size:11px;
+    color:var(--ink-soft);
+
+    margin-left:2px;
+
+    transition:transform .15s;
+}
+
+.profile.open .chev{
+    transform:rotate(180deg);
+}
+/* =========================================
+   ANNOUNCEMENT PAGE HEADER
+========================================= */
+
+#page-announcement .page-header h1 {
+    color: #17233d !important;
+}
+
+#page-announcement .page-header p {
+    color: #6b7280 !important;
+}
+/* ---------- TOPBAR TITLE ---------- */
+
+.topbar h2,
+#pageTitle{
+    color:#17233d !important;
+    font-size:18px;
+    font-weight:700;
+}
+/* =========================================
+   FIX PUBLISHED ANNOUNCEMENT MESSAGE
+========================================= */
+
+#announcementList .announcement-item .announcement-message {
+    color: #111827 !important;
+    opacity: 1 !important;
+}
+
+/* Text generated inside the message */
+#announcementList .announcement-item .announcement-message * {
+    color: #111827 !important;
+    opacity: 1 !important;
+}
+
+/* Keep it dark even when sidebar is hovered */
+#announcementList .announcement-item:hover .announcement-message {
+    color: #111827 !important;
+    opacity: 1 !important;
+}
+
+#announcementList .announcement-item:hover .announcement-message * {
+    color: #111827 !important;
+    opacity: 1 !important;
+}
+
+
+/* ---------- PROFILE DROPDOWN ---------- */
+
+.profile-menu{
+    position:absolute;
+
+    top:calc(100% + 10px);
+    right:0;
+
+    width:230px;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    box-shadow:0 14px 34px rgba(15,25,60,0.16);
+
+    border:1px solid var(--line);
+
+    padding:10px;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(-6px);
+
+    transition:
+        opacity .15s ease,
+        transform .15s ease,
+        visibility .15s;
+
+    z-index:50;
+}
+
+.profile.open .profile-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.profile-menu-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:8px 8px 12px;
+
+    border-bottom:1px solid var(--line);
+
+    margin-bottom:6px;
+}
+
+.profile-menu-header .avatar{
+    width:42px;
+    height:42px;
+    font-size:15px;
+}
+
+.profile-menu-header .name{
+    font-size:13.5px;
+    font-weight:700;
+}
+
+.profile-menu-header .sub{
+    font-size:11.5px;
+    color:var(--ink-soft);
+}
+
+.profile-menu-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    width:100%;
+
+    padding:9px 10px;
+
+    border-radius:9px;
+
+    font-size:13.5px;
+    font-weight:500;
+
+    color:var(--ink);
+
+    border:none;
+    background:transparent;
+
+    text-align:left;
+}
+
+.profile-menu-item i{
+    width:16px;
+
+    text-align:center;
+
+    color:var(--ink-soft);
+
+    font-size:13.5px;
+}
+
+.profile-menu-item:hover{
+    background:var(--bg);
+}
+
+.profile-menu-item.danger{
+    color:var(--red);
+}
+
+.profile-menu-item.danger i{
+    color:var(--red);
+}
+
+.profile-menu-divider{
+    height:1px;
+
+    background:var(--line);
+
+    margin:6px 2px;
+}
+
+
+/* =========================================================
+   PAGE CONTENT
+========================================================= */
+
+.content{
+    padding:32px 38px 50px;
+}
+
+.page{
+    width:100%;
+}
+
+
+/* ---------- PAGE HEADER ---------- */
+
+.page-header{
+    margin-bottom:22px;
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+}
+
+.page-header h1{
+    font-size:24px;
+    font-weight:800;
+
+    margin-bottom:4px;
+
+    letter-spacing:-0.3px;
+}
+
+.page-header p{
+    font-size:13.5px;
+    color:var(--ink-soft);
+}
+
+/* =========================================================
+   TWO COLUMN ANNOUNCEMENT LAYOUT
+========================================================= */
+
+.grid-2{
+    display:grid;
+    grid-template-columns:1.35fr 1fr;
+    gap:24px;
+    align-items:stretch;
+}
+
+/* Make both announcement containers equal height */
+.grid-2 > .card{
+    height:100%;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card{
+    background:var(--card);
+
+    border-radius:17px;
+
+    border:1px solid rgba(17,24,39,0.025);
+
+    padding:25px 26px 24px;
+
+    box-shadow:
+        0 2px 8px rgba(15,23,42,0.025),
+        0 8px 24px rgba(15,23,42,0.035);
+}
+
+.card-head{
+    display:flex;
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.card-head h3{
+    font-size:18px;
+    font-weight:700;
+
+    color:var(--ink);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-field{
+    margin-bottom:17px;
+}
+
+.form-field label{
+    display:block;
+
+    font-size:13px;
+    font-weight:600;
+
+    color:#667085;
+
+    margin-bottom:7px;
+}
+
+.text-input{
+    width:100%;
+
+    height:46px;
+
+    padding:0 14px;
+
+    background:#f6f7f9;
+
+    border:1px solid transparent;
+
+    border-radius:10px;
+
+    color:var(--ink);
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    outline:none;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+.text-input::placeholder{
+    color:#8a909b;
+}
+
+.text-input:hover{
+    background:#f3f5f8;
+}
+
+.text-input:focus{
+    background:#fff;
+
+    border-color:var(--blue);
+
+    box-shadow:0 0 0 3px rgba(47,111,237,0.10);
+}
+
+
+/* ---------- SELECT ---------- */
+
+select.text-input{
+    appearance:auto;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   ANNOUNCEMENT MESSAGE EDITOR
+========================================================= */
+
+.announcement-message{
+    margin-top:3px;
+    margin-bottom:0;
+}
+
+.message-editor{
+    width:100%;
+
+    border:1px solid #dce3ed;
+
+    border-radius:12px;
+
+    background:#fff;
+
+    overflow:hidden;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.message-editor:focus-within{
+    border-color:var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(59,130,246,0.10);
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.message-toolbar{
+    height:48px;
+
+    display:flex;
+    align-items:center;
+
+    gap:3px;
+
+    padding:0 12px;
+
+    border-bottom:1px solid #e5eaf1;
+
+    background:#fafbfd;
+}
+
+.message-toolbar button{
+    width:34px;
+    height:34px;
+
+    border:none;
+
+    background:transparent;
+
+    border-radius:7px;
+
+    color:#475569;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:14px;
+
+    transition:
+        background .15s ease,
+        color .15s ease,
+        transform .1s ease;
+}
+
+.message-toolbar button:hover{
+    background:#e8f0ff;
+    color:#2563eb;
+}
+
+.message-toolbar button:active{
+    transform:scale(.95);
+}
+
+.toolbar-divider{
+    width:1px;
+    height:22px;
+
+    background:#dce2ea;
+
+    margin:0 7px;
+}
+
+
+/* =========================================================
+   MESSAGE WRITING AREA
+========================================================= */
+
+.message-content{
+    min-height:192px;
+    max-height:280px;
+
+    overflow-y:auto;
+
+    padding:16px 18px;
+
+    outline:none;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    color:#1e293b;
+
+    background:#fff;
+}
+
+.message-content:empty::before{
+    content:attr(data-placeholder);
+
+    color:#94a3b8;
+
+    pointer-events:none;
+}
+
+.message-content:focus{
+    outline:none;
+}
+
+.message-content ul,
+.message-content ol{
+    padding-left:25px;
+
+    margin:8px 0;
+}
+
+.message-content a{
+    color:#2563eb;
+
+    text-decoration:underline;
+}
+
+
+/* =========================================================
+   MESSAGE COUNTER
+========================================================= */
+
+.message-footer{
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-top:7px;
+
+    padding-right:3px;
+}
+
+#messageCounter{
+    font-size:12px;
+
+    color:#64748b;
+}
+
+
+/* =========================================================
+   POST ANNOUNCEMENT BUTTON
+========================================================= */
+
+.announcement-actions{
+    margin-top:20px;
+
+    display:flex;
+
+    justify-content:flex-start;
+}
+
+.announcement-actions .btn-primary{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    min-height:48px;
+
+    padding:0 21px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:var(--blue);
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    box-shadow:
+        0 4px 10px rgba(47,111,237,0.18);
+
+    transition:
+        background .15s ease,
+        transform .15s ease,
+        box-shadow .15s ease;
+}
+
+.announcement-actions .btn-primary:hover{
+    background:#2863d8;
+
+    box-shadow:
+        0 6px 14px rgba(47,111,237,0.22);
+
+    transform:translateY(-1px);
+}
+
+.announcement-actions .btn-primary:active{
+    transform:translateY(0);
+}
+
+.announcement-actions .btn-primary i{
+    font-size:14px;
+}
+
+
+/* =========================================================
+   PUBLISHED ANNOUNCEMENTS
+========================================================= */
+
+#announcementList{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+}
+
+
+/* ---------- INDIVIDUAL ANNOUNCEMENT ---------- */
+
+.announcement-item{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    background:var(--blue-soft);
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+}
+
+.announcement-item:hover{
+    transform:translateY(-1px);
+
+    box-shadow:
+        0 5px 15px rgba(47,111,237,0.08);
+}
+
+
+/* ---------- ANNOUNCEMENT ICON ---------- */
+
+.announcement-icon{
+    width:51px;
+    height:51px;
+
+    flex-shrink:0;
+
+    border-radius:12px;
+
+    background:var(--blue);
+
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+}
+
+
+/* ---------- ANNOUNCEMENT CONTENT ---------- */
+
+.announcement-content{
+    min-width:0;
+
+    flex:1;
+}
+
+.announcement-content h4{
+    font-size:15px;
+
+    font-weight:700;
+
+    color:var(--ink);
+
+    margin-bottom:4px;
+
+    line-height:1.35;
+}
+
+.announcement-meta{
+    font-size:12px;
+
+    color:#6b7280;
+
+    margin-bottom:7px;
+}
+
+.announcement-content p{
+    font-size:13.5px;
+
+    color:#344054;
+
+    line-height:1.55;
+
+    word-break:break-word;
+}
+
+
+/* =========================================================
+   POSSIBLE ALTERNATE CLASS NAMES
+   Supports dynamically-created announcement cards
+========================================================= */
+
+.published-announcement{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    background:var(--blue-soft);
+}
+
+.published-announcement .announcement-icon{
+    width:51px;
+    height:51px;
+
+    flex-shrink:0;
+
+    border-radius:12px;
+
+    background:var(--blue);
+
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+
+/* =========================================================
+   EMPTY PUBLISHED STATE
+========================================================= */
+
+.announcement-empty{
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    min-height:180px;
+
+    color:var(--ink-soft);
+}
+
+.announcement-empty i{
+    font-size:30px;
+
+    margin-bottom:10px;
+
+    color:#b5bfce;
+}
+
+.announcement-empty p{
+    font-size:13px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.sidebar::-webkit-scrollbar,
+.message-content::-webkit-scrollbar{
+    width:6px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.message-content::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.message-content::-webkit-scrollbar-thumb{
+    background:rgba(100,116,139,.25);
+
+    border-radius:10px;
+}
+/* =========================================================
+   EMPTY PUBLISHED ANNOUNCEMENT STATE
+========================================================= */
+
+.announcement-empty{
+    min-height:500px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    color:#98a2b3;
+}
+
+.announcement-empty-icon{
+    width:64px;
+    height:64px;
+
+    border-radius:50%;
+
+    background:#f0f4fa;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:14px;
+}
+
+.announcement-empty-icon i{
+    font-size:25px;
+    color:#a5afbf;
+}
+
+.announcement-empty h4{
+    font-size:15px;
+    font-weight:600;
+
+    color:#667085;
+
+    margin-bottom:5px;
+}
+
+.announcement-empty p{
+    font-size:13px;
+    color:#98a2b3;
+}
+
+
+/* =========================================================
+   PUBLISHED ANNOUNCEMENT CARD
+========================================================= */
+
+.announcement-item{
+    display:flex;
+    align-items:flex-start;
+
+    gap:16px;
+
+    padding:16px;
+
+    margin-bottom:14px;
+
+    border-radius:14px;
+
+    background:#eaf1ff;
+
+    width:100%;
+}
+
+.announcement-icon{
+    width:51px;
+    height:51px;
+
+    min-width:51px;
+
+    border-radius:12px;
+
+    background:#2f6fed;
+
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+}
+
+.announcement-content{
+    flex:1;
+    min-width:0;
+}
+
+.announcement-content h4{
+    font-size:15px;
+    font-weight:700;
+
+    color:#111827;
+
+    line-height:1.35;
+
+    margin-bottom:3px;
+}
+
+.announcement-meta{
+    font-size:12px;
+
+    color:#6b7280;
+
+    margin-bottom:7px;
+}
+
+.announcement-content p{
+    font-size:13.5px;
+
+    color:#344054;
+
+    line-height:1.5;
+
+    margin:0;
+}
+
+
+/* =========================================================
+   PUBLISHED LIST
+========================================================= */
+
+#announcementList{
+    width:100%;
+}
+
+#announcementList .announcement-item:last-child{
+    margin-bottom:0;
+}
+/* =========================================================
+   ANNOUNCEMENT ACTION MENU
+========================================================= */
+
+.announcement-actions-menu {
+    position: relative;
+    flex-shrink: 0;
+}
+
+
+/* THREE DOT BUTTON */
+
+.announcement-more {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    background: transparent;
+
+    border-radius: 8px;
+
+    color: #64748b;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.announcement-more:hover {
+    background: rgba(255,255,255,0.7);
+    color: #334155;
+}
+
+.announcement-more i {
+    font-size: 16px;
+}
+
+
+/* DROPDOWN */
+
+.announcement-dropdown {
+    position: absolute;
+
+    top: 38px;
+    right: 0;
+
+    width: 135px;
+
+    padding: 6px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 8px 25px rgba(15,23,42,0.12);
+
+    z-index: 50;
+
+    display: none;
+}
+
+.announcement-dropdown.show {
+    display: block;
+}
+
+
+/* DROPDOWN BUTTON */
+
+.announcement-dropdown button {
+    width: 100%;
+
+    border: none;
+    background: transparent;
+
+    padding: 9px 10px;
+
+    border-radius: 7px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    color: #334155;
+
+    cursor: pointer;
+
+    text-align: left;
+}
+
+.announcement-dropdown button:hover {
+    background: #f1f5f9;
+}
+
+.announcement-dropdown button i {
+    width: 15px;
+
+    font-size: 12px;
+}
+
+
+/* DELETE */
+
+.announcement-dropdown .delete-action {
+    color: #ef4444;
+}
+
+.announcement-dropdown .delete-action:hover {
+    background: #fef2f2;
+}
+
+
+/* =========================================================
+   CANCEL EDIT BUTTON
+========================================================= */
+
+.announcement-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.btn-cancel-edit {
+
+    border: 1px solid #d1d5db;
+
+    background: #ffffff;
+
+    color: #475569;
+
+    padding: 12px 18px;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    transition: all 0.2s ease;
+}
+
+.btn-cancel-edit:hover {
+    background: #f8fafc;
+
+    border-color: #94a3b8;
+}
+/* =========================================================
+   DELETE ANNOUNCEMENT MODAL
+========================================================= */
+
+.delete-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.45);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+.delete-modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* MODAL */
+
+.delete-modal {
+    width: 100%;
+    max-width: 410px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.18);
+
+    transform: translateY(10px) scale(0.97);
+
+    transition: transform 0.2s ease;
+}
+
+.delete-modal-overlay.show .delete-modal {
+    transform: translateY(0) scale(1);
+}
+
+
+/* ICON */
+
+.delete-modal-icon {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 16px;
+
+    border-radius: 50%;
+
+    background: #fef2f2;
+
+    color: #ef4444;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-modal-icon i {
+    font-size: 21px;
+}
+
+
+/* TITLE */
+
+.delete-modal h3 {
+    margin: 0 0 9px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #111827;
+}
+
+
+/* DESCRIPTION */
+
+.delete-modal p {
+    margin: 0 auto 24px;
+
+    max-width: 320px;
+
+    font-size: 13.5px;
+
+    line-height: 1.55;
+
+    color: #667085;
+}
+
+
+/* BUTTON CONTAINER */
+
+.delete-modal-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+
+/* CANCEL */
+
+.delete-cancel-btn {
+    flex: 1;
+
+    height: 42px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #475467;
+
+    font-family: inherit;
+
+    font-size: 13.5px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.delete-cancel-btn:hover {
+    background: #f8fafc;
+}
+
+
+/* DELETE */
+
+.delete-confirm-btn {
+    flex: 1;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #ef4444;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 13.5px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    transition: 0.2s ease;
+}
+
+.delete-confirm-btn:hover {
+    background: #dc2626;
+}
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width:1200px){
+
+    .grid-2{
+        grid-template-columns:1fr 0.9fr;
+    }
+
+    .search-box{
+        width:230px;
+    }
+}
+
+
+@media (max-width:1100px){
+
+    .sidebar{
+        width:240px;
+    }
+
+    .grid-2{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        width:100%;
+    }
+}
+
+
+@media (max-width:800px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .topbar{
+        padding:14px 20px;
+    }
+
+    .search-box{
+        display:none;
+    }
+
+    .content{
+        padding:24px 20px 40px;
+    }
+
+    .page-header h1{
+        font-size:22px;
+    }
+
+    .grid-2{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:21px;
+    }
+
+    .profile-name{
+        display:none;
+    }
+
+    .topbar-right{
+        gap:10px;
+    }
+}
+
+
+@media (max-width:500px){
+
+    .content{
+        padding:20px 14px 35px;
+    }
+
+    .topbar{
+        padding:12px 14px;
+    }
+
+    .page-header{
+        margin-bottom:18px;
+    }
+
+    .card{
+        padding:18px;
+        border-radius:14px;
+    }
+
+    .message-toolbar{
+        padding:0 7px;
+        gap:1px;
+    }
+
+    .message-toolbar button{
+        width:31px;
+        height:31px;
+    }
+
+    .toolbar-divider{
+        margin:0 3px;
+    }
+
+    .announcement-actions .btn-primary{
+        width:100%;
+    }
+
+    .announcement-item{
+        padding:13px;
+        gap:11px;
+    }
+
+    .announcement-icon{
+        width:43px;
+        height:43px;
+        font-size:17px;
+    }
+}
+
+/* =========================================================
+   EMOJI PICKER
+========================================================= */
+
+.emoji-picker-modal {
+    width: 760px;
+    max-width: calc(100% - 30px);
+    max-height: 88vh;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.22);
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    animation: emojiPickerShow 0.2s ease;
+}
+
+
+@keyframes emojiPickerShow {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.emoji-picker-header {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.emoji-picker-title {
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+.emoji-picker-icon {
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+
+    background: #fff7ed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+}
+
+
+.emoji-picker-title h2 {
+
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+
+.emoji-picker-title p {
+
+    margin: 4px 0 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+.emoji-picker-close {
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    background: transparent;
+
+    border-radius: 9px;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: 0.2s;
+}
+
+
+.emoji-picker-close:hover {
+
+    background: #f1f5f9;
+
+    color: #0f172a;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.emoji-search {
+
+    position: relative;
+
+    margin: 18px 24px 14px;
+}
+
+
+.emoji-search i {
+
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #64748b;
+
+    font-size: 16px;
+}
+
+
+.emoji-search input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px 15px 13px 43px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 11px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    color: #0f172a;
+
+    transition: 0.2s;
+}
+
+
+.emoji-search input:focus {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+/* =========================================================
+   HORIZONTAL CATEGORIES
+========================================================= */
+
+.emoji-categories {
+
+    display: flex;
+
+    gap: 8px;
+
+    padding: 0 24px 16px;
+
+    overflow-x: auto;
+
+    scrollbar-width: thin;
+}
+
+
+.emoji-categories::-webkit-scrollbar {
+
+    height: 4px;
+}
+
+
+.emoji-category {
+
+    min-width: 82px;
+
+    padding: 11px 12px;
+
+    border: 1px solid #e5e7eb;
+
+    background: #f8fafc;
+
+    border-radius: 10px;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+
+    white-space: nowrap;
+}
+
+
+.emoji-category i {
+
+    font-size: 18px;
+}
+
+
+.emoji-category:hover {
+
+    background: #f1f5f9;
+
+    color: #2563eb;
+
+    border-color: #bfdbfe;
+}
+
+
+.emoji-category.active {
+
+    background: #eff6ff;
+
+    border-color: #bfdbfe;
+
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.emoji-section-header {
+
+    margin: 0 24px;
+
+    padding: 12px 0;
+
+    border-top: 1px solid #e5e7eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.emoji-section-header > div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #0f172a;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+.emoji-section-header i {
+
+    color: #64748b;
+}
+
+
+#emojiCount {
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   EMOJI GRID
+========================================================= */
+
+.emoji-icon-grid {
+
+    padding: 5px 24px 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(8, 1fr);
+
+    gap: 9px;
+
+    overflow-y: auto;
+
+    min-height: 280px;
+
+    max-height: 390px;
+}
+
+
+/* =========================================================
+   EMOJI BUTTON
+========================================================= */
+
+.emoji-icon-button {
+
+    aspect-ratio: 1 / 1;
+
+    min-width: 0;
+
+    border: 1px solid #e5e7eb;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 29px;
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+.emoji-icon-button:hover {
+
+    background: #f8fafc;
+
+    border-color: #bfdbfe;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 14px rgba(15, 23, 42, 0.08);
+}
+
+
+.emoji-icon-button:active {
+
+    transform: scale(0.92);
+}
+
+
+/* =========================================================
+   NO RESULTS
+========================================================= */
+
+.emoji-no-results {
+
+    min-height: 280px;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    text-align: center;
+}
+
+
+.no-results-emoji {
+
+    font-size: 42px;
+
+    margin-bottom: 10px;
+}
+
+
+.emoji-no-results h4 {
+
+    margin: 0;
+
+    color: #334155;
+
+    font-size: 15px;
+}
+
+
+.emoji-no-results p {
+
+    margin: 5px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.emoji-picker-footer {
+
+    border-top: 1px solid #e5e7eb;
+
+    background: #f8fafc;
+
+    padding: 14px 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+.emoji-picker-footer span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.emoji-picker-footer span i {
+
+    color: #2563eb;
+}
+
+
+.emoji-close-btn {
+
+    border: 1px solid #cbd5e1;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    padding: 9px 18px;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.emoji-close-btn:hover {
+
+    background: #f1f5f9;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .emoji-icon-grid {
+
+        grid-template-columns:
+            repeat(6, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .emoji-picker-modal {
+
+        max-width:
+            calc(100% - 16px);
+
+    }
+
+    .emoji-picker-header {
+
+        padding: 17px;
+
+    }
+
+    .emoji-search {
+
+        margin-left: 17px;
+        margin-right: 17px;
+
+    }
+
+    .emoji-categories {
+
+        padding-left: 17px;
+        padding-right: 17px;
+
+    }
+
+    .emoji-section-header {
+
+        margin-left: 17px;
+        margin-right: 17px;
+
+    }
+
+    .emoji-icon-grid {
+
+        padding-left: 17px;
+        padding-right: 17px;
+
+        grid-template-columns:
+            repeat(5, 1fr);
+
+    }
+
+    .emoji-picker-footer {
+
+        padding: 12px 17px;
+
+    }
+
+}
+
+/* =========================================================
+   FIX EMOJI MODAL POSITION
+   FORCE CENTER OF SCREEN
+========================================================= */
+
+#emojiModal {
+    position: fixed !important;
+
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    display: none !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 20px !important;
+
+    box-sizing: border-box !important;
+
+    z-index: 99999 !important;
+}
+
+
+/* kapag open */
+
+#emojiModal.show {
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+/* actual picker */
+
+#emojiModal .emoji-picker-modal {
+    position: relative !important;
+
+    margin: auto !important;
+
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    transform: none;
+
+    width: 760px;
+
+    max-width: calc(100vw - 40px);
+
+    max-height: calc(100vh - 40px);
+}
+
+/* =========================================================
+   INSERT LINK MODAL
+========================================================= */
+
+#linkModal {
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    display: none !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 20px !important;
+
+    box-sizing: border-box !important;
+
+    z-index: 100000 !important;
+
+    background: rgba(15, 23, 42, 0.45) !important;
+}
+
+
+/* OPEN */
+
+#linkModal.show {
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+/* =========================================================
+   LINK CARD
+========================================================= */
+
+#linkModal .custom-input-modal {
+
+    width: 460px;
+
+    max-width: calc(100vw - 40px);
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.25);
+
+    overflow: hidden;
+
+    position: relative;
+
+    margin: auto !important;
+
+    animation: linkModalShow 0.2s ease;
+}
+
+
+@keyframes linkModalShow {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.custom-modal-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.custom-modal-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.custom-modal-icon {
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+}
+
+
+.custom-modal-icon.link-icon {
+
+    background: #eff6ff;
+
+    color: #2563eb;
+}
+
+
+.custom-modal-title h2 {
+
+    margin: 0;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #0f172a;
+}
+
+
+.custom-modal-title p {
+
+    margin: 4px 0 0;
+
+    font-size: 12px;
+
+    color: #64748b;
+}
+
+
+/* CLOSE */
+
+.custom-modal-close {
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    transition: 0.2s;
+}
+
+
+.custom-modal-close:hover {
+
+    background: #f1f5f9;
+
+    color: #0f172a;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.custom-modal-body {
+
+    padding: 22px;
+}
+
+
+.custom-modal-body label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #334155;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   LINK INPUT
+========================================================= */
+
+.link-input-wrapper {
+
+    position: relative;
+
+    width: 100%;
+}
+
+
+.link-input-wrapper > i {
+
+    position: absolute;
+
+    left: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    pointer-events: none;
+}
+
+
+.link-input-wrapper input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px 12px 40px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    color: #0f172a;
+
+    transition: 0.2s;
+}
+
+
+.link-input-wrapper input::placeholder {
+
+    color: #94a3b8;
+}
+
+
+.link-input-wrapper input:focus {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+.link-helper {
+
+    margin: 8px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FOOTER BUTTONS
+========================================================= */
+
+.custom-modal-actions {
+
+    padding: 15px 22px;
+
+    background: #f8fafc;
+
+    border-top: 1px solid #e5e7eb;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.modal-cancel-btn {
+
+    border: 1px solid #cbd5e1;
+
+    background: #ffffff;
+
+    color: #475569;
+
+    padding: 9px 17px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.modal-cancel-btn:hover {
+
+    background: #f1f5f9;
+}
+
+
+.modal-confirm-btn {
+
+    border: none;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    padding: 10px 17px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    transition: 0.2s;
+}
+
+
+.modal-confirm-btn:hover {
+
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   EMOJI MODAL - FINAL FIX
+========================================================= */
+
+#emojiModal {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    padding: 20px !important;
+    box-sizing: border-box !important;
+
+    background: rgba(15, 23, 42, 0.45) !important;
+
+    display: none !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    z-index: 999999 !important;
+}
+
+
+/* OPEN */
+
+#emojiModal.show,
+#emojiModal.active {
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+/* EMOJI PICKER CARD */
+
+#emojiModal .emoji-picker-modal {
+    position: relative !important;
+
+    width: 760px !important;
+    max-width: calc(100vw - 40px) !important;
+
+    max-height: calc(100vh - 40px) !important;
+
+    margin: 0 !important;
+
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+
+    transform: none !important;
+
+    background: #ffffff !important;
+
+    border-radius: 18px !important;
+
+    overflow: hidden !important;
+
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.25) !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+
+/* EMOJI GRID */
+
+#emojiModal .emoji-icon-grid {
+    overflow-y: auto !important;
+
+    max-height: 390px !important;
+
+    min-height: 280px !important;
+}
+
+
+/* =========================================================
+   EMOJI PICKER - FINAL
+========================================================= */
+
+#emojiModal {
+    position: fixed !important;
+
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    background: rgba(15, 23, 42, 0.45) !important;
+
+    display: none;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    z-index: 999999 !important;
+}
+
+
+/* =========================================================
+   OPEN STATE
+========================================================= */
+
+#emojiModal.emoji-open {
+    display: flex !important;
+}
+
+
+/* =========================================================
+   PICKER BOX
+========================================================= */
+
+#emojiPickerBox {
+
+    width: 760px;
+
+    max-width: 95vw;
+
+    max-height: 90vh;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.25);
+
+    display: flex;
+
+    flex-direction: column;
+
+    animation: emojiPickerAnimation
+        0.2s ease;
+}
+
+
+@keyframes emojiPickerAnimation {
+
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+#emojiPickerBox .emoji-picker-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.emoji-picker-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.emoji-picker-icon {
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 12px;
+
+    background: #fff7ed;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 28px;
+}
+
+
+.emoji-picker-title h2 {
+
+    margin: 0;
+
+    font-size: 19px;
+
+    color: #0f172a;
+}
+
+
+.emoji-picker-title p {
+
+    margin: 4px 0 0;
+
+    font-size: 12px;
+
+    color: #64748b;
+}
+
+
+.emoji-picker-close {
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    background: transparent;
+
+    border-radius: 8px;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    font-size: 17px;
+}
+
+
+.emoji-picker-close:hover {
+
+    background: #f1f5f9;
+
+    color: #0f172a;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.emoji-search {
+
+    position: relative;
+
+    margin: 16px 22px;
+}
+
+
+.emoji-search > i {
+
+    position: absolute;
+
+    left: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #64748b;
+}
+
+
+.emoji-search input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px 12px 40px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 13px;
+}
+
+
+.emoji-search input:focus {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+/* =========================================================
+   HORIZONTAL CATEGORY
+========================================================= */
+
+.emoji-categories {
+
+    display: flex;
+
+    gap: 8px;
+
+    padding: 0 22px 14px;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+}
+
+
+.emoji-category {
+
+    min-width: 78px;
+
+    padding: 9px 10px;
+
+    border: 1px solid #e5e7eb;
+
+    background: #f8fafc;
+
+    border-radius: 10px;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.emoji-category i {
+
+    font-size: 16px;
+}
+
+
+.emoji-category:hover {
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    border-color: #bfdbfe;
+}
+
+
+.emoji-category.active {
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    border-color: #93c5fd;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.emoji-section-header {
+
+    margin: 0 22px;
+
+    padding: 11px 0;
+
+    border-top: 1px solid #e5e7eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.emoji-section-header > div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #0f172a;
+}
+
+
+.emoji-section-header i {
+
+    color: #64748b;
+}
+
+
+#emojiCount {
+
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   EMOJI GRID
+========================================================= */
+
+#emojiIconGrid {
+
+    padding: 5px 22px 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(8, 1fr);
+
+    gap: 8px;
+
+    overflow-y: auto;
+
+    min-height: 270px;
+
+    max-height: 380px;
+}
+
+
+/* =========================================================
+   EMOJI BUTTON
+========================================================= */
+
+.emoji-icon-button {
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    border: 1px solid #e5e7eb;
+
+    background: #ffffff;
+
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 29px;
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+.emoji-icon-button:hover {
+
+    background: #f8fafc;
+
+    border-color: #bfdbfe;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 12px rgba(15, 23, 42, 0.08);
+}
+
+
+.emoji-icon-button:active {
+
+    transform: scale(0.92);
+}
+
+
+/* =========================================================
+   NO RESULTS
+========================================================= */
+
+#emojiNoResults {
+
+    min-height: 270px;
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+#emojiNoResults > div {
+
+    font-size: 40px;
+}
+
+
+#emojiNoResults h4 {
+
+    margin: 8px 0 0;
+
+    font-size: 14px;
+
+    color: #334155;
+}
+
+
+#emojiNoResults p {
+
+    margin: 5px 0;
+
+    font-size: 11px;
+
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.emoji-picker-footer {
+
+    padding: 13px 22px;
+
+    background: #f8fafc;
+
+    border-top: 1px solid #e5e7eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.emoji-picker-footer span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+.emoji-picker-footer span i {
+
+    color: #2563eb;
+}
+
+
+.emoji-picker-footer button {
+
+    border: 1px solid #cbd5e1;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    padding: 8px 17px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.emoji-picker-footer button:hover {
+
+    background: #f1f5f9;
+}
+
+/* =========================================================
+   LOGOUT CONFIRMATION MODAL
+========================================================= */
+
+.logout-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    display: none;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: rgba(15, 23, 42, 0.55) !important;
+    backdrop-filter: blur(3px);
+
+    z-index: 99999 !important;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+
+/* SHOW MODAL */
+
+.logout-overlay.show {
+    display: flex !important;
+
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================================================
+   LOGOUT BOX
+========================================================= */
+
+.logout-modal {
+    width: min(380px, calc(100% - 32px));
+
+    padding: 32px;
+
+    background: #ffffff !important;
+
+    border-radius: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 24px 60px rgba(15, 23, 42, 0.20);
+
+    transform: translateY(12px) scale(0.97);
+
+    transition: transform 0.2s ease;
+}
+
+
+/* MODAL ANIMATION */
+
+.logout-overlay.show .logout-modal {
+    transform: translateY(0) scale(1);
+}
+
+
+/* =========================================================
+   LOGOUT ICON
+========================================================= */
+
+.logout-icon {
+    width: 60px;
+    height: 60px;
+
+    margin: 0 auto 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fee9e7 !important;
+
+    color: #ef4444 !important;
+
+    font-size: 26px;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.logout-modal h2 {
+    margin: 0 0 8px;
+
+    color: #111827 !important;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.logout-modal p {
+    margin: 0 auto;
+
+    max-width: 310px;
+
+    color: #6b7280 !important;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.logout-actions {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    margin-top: 26px;
+}
+
+
+/* CANCEL */
+
+.logout-cancel {
+    height: 44px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #f3f4f6 !important;
+
+    color: #1f2937 !important;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.logout-cancel:hover {
+    background: #e5e7eb !important;
+}
+
+
+/* LOGOUT */
+
+.logout-confirm {
+    height: 44px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #ef4444 !important;
+
+    color: #ffffff !important;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.logout-confirm:hover {
+    background: #dc2626 !important;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    #emojiIconGrid {
+
+        grid-template-columns:
+            repeat(6, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    #emojiIconGrid {
+
+        grid-template-columns:
+            repeat(5, 1fr);
+
+    }
+
+    .emoji-picker-footer span {
+
+        display: none;
+
+    }
+
+}
+
+
+/* =========================================================
+   EMOJI PICKER MODAL
+========================================================= */
+
+#emojiModal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(15, 23, 42, 0.45);
+
+    padding: 20px;
+}
+
+#emojiModal.show {
+    display: flex;
+}
+
+
+#emojiPickerBox {
+    width: min(720px, 95vw);
+    max-height: 85vh;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.25);
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* HEADER */
+
+.emoji-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 22px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.emoji-picker-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.emoji-picker-icon {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 12px;
+
+    background: #fff7ed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+}
+
+
+.emoji-picker-title h2 {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.emoji-picker-title p {
+    margin: 3px 0 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+.emoji-picker-close {
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    background: #f1f5f9;
+
+    color: #64748b;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+
+.emoji-picker-close:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+
+/* SEARCH */
+
+.emoji-search {
+    margin: 14px 18px;
+
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 13px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+}
+
+
+.emoji-search i {
+    color: #94a3b8;
+}
+
+
+.emoji-search input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-size: 14px;
+}
+
+
+/* CATEGORIES */
+
+.emoji-categories {
+    display: flex;
+
+    gap: 4px;
+
+    padding: 0 18px;
+
+    overflow-x: auto;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.emoji-category {
+    flex: 0 0 auto;
+
+    border: none;
+
+    background: transparent;
+
+    color: #64748b;
+
+    padding: 10px 12px;
+
+    border-radius: 10px 10px 0 0;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 13px;
+}
+
+
+.emoji-category i {
+    font-size: 15px;
+}
+
+
+.emoji-category:hover {
+    background: #f8fafc;
+    color: #2563eb;
+}
+
+
+.emoji-category.active {
+    background: #eff6ff;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+
+/* SECTION */
+
+.emoji-section-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 13px 20px 8px;
+
+    color: #334155;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.emoji-section-header > div {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+#emojiCount {
+    color: #94a3b8;
+
+    font-weight: 500;
+}
+
+
+/* GRID */
+
+#emojiIconGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(10, minmax(0, 1fr));
+
+    gap: 6px;
+
+    padding: 10px 18px 18px;
+
+    overflow-y: auto;
+
+    min-height: 300px;
+
+    max-height: 420px;
+}
+
+
+.emoji-icon-button {
+    width: 52px;
+    height: 52px;
+
+    justify-self: center;
+
+    border: none;
+
+    background: transparent;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 28px;
+
+    transition:
+        transform 0.12s ease,
+        background 0.12s ease;
+}
+
+
+.emoji-icon-button:hover {
+    background: #f1f5f9;
+
+    transform: scale(1.15);
+}
+
+
+.emoji-icon-button:active {
+    transform: scale(0.95);
+}
+
+
+/* NO RESULTS */
+
+#emojiNoResults {
+    min-height: 300px;
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: #64748b;
+}
+
+
+#emojiNoResults > div {
+    font-size: 42px;
+
+    margin-bottom: 8px;
+}
+
+
+#emojiNoResults h4 {
+    margin: 0;
+
+    color: #334155;
+}
+
+
+#emojiNoResults p {
+    margin: 5px 0 0;
+
+    font-size: 13px;
+}
+
+
+/* FOOTER */
+
+.emoji-picker-footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 13px 18px;
+
+    border-top: 1px solid #e5e7eb;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.emoji-picker-footer span {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+.emoji-picker-footer button {
+    border: none;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    padding: 8px 15px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+
+.emoji-picker-footer button:hover {
+    background: #1d4ed8;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    #emojiPickerBox {
+        width: 96vw;
+        max-height: 90vh;
+    }
+
+    #emojiIconGrid {
+        grid-template-columns:
+            repeat(7, minmax(0, 1fr));
+    }
+
+    .emoji-icon-button {
+        width: 42px;
+        height: 42px;
+
+        font-size: 24px;
+    }
+
+}
+
+
+/* =========================================
+   ANNOUNCEMENT NOTIFICATION POPUP
+========================================= */
+
+.announcement-notification-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(15, 23, 42, 0.45);
+
+    z-index: 999999;
+}
+
+.announcement-notification-overlay.show {
+    display: flex !important;
+}
+
+.announcement-notification-card {
+    width: 420px;
+    max-width: 90vw;
+
+    background: #ffffff;
+    border-radius: 18px;
+
+    padding: 32px;
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 60px rgba(15, 23, 42, 0.20);
+
+    animation: announcementNotificationPop 0.25s ease;
+}
+
+.notification-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+}
+
+/* SUCCESS */
+.notification-icon.success {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+/* DELETE */
+.notification-icon.delete {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* ERROR */
+.notification-icon.error {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.announcement-notification-card h2 {
+    margin: 0 0 8px;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    color: #1e293b;
+}
+
+.announcement-notification-card p {
+    margin: 0 0 24px;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.announcement-notification-card button {
+    min-width: 100px;
+
+    border: none;
+
+    background: #2563eb;
+    color: #ffffff;
+
+    padding: 11px 28px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.announcement-notification-card button:hover {
+    background: #1d4ed8;
+}
+
+@keyframes announcementNotificationPop {
+
+    from {
+        opacity: 0;
+        transform: scale(0.90);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+/* ==================== SIDEBAR ANIMATION ==================== */
+
+.sidebar {
+    width: 258px;
+    flex-shrink: 0;
+    transition:
+        width 0.35s ease,
+        padding 0.35s ease;
+    overflow-x: hidden;
+}
+
+.main {
+    flex: 1;
+    min-width: 0;
+    transition: width 0.35s ease;
+}
+
+/* CLOSED SIDEBAR */
+
+.app.sidebar-closed .sidebar {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+}
+
+/* MAIN CONTENT */
+
+.app.sidebar-closed .main {
+    width: 100%;
+}
+
+/* HAMBURGER ANIMATION */
+
+.hamburger {
+    transition:
+        transform 0.3s ease,
+        background 0.2s ease;
+}
+
+.hamburger:hover {
+    transform: scale(1.08);
+}
+
+.app.sidebar-closed .hamburger {
+    transform: rotate(180deg);
+}
+
+.app.sidebar-closed .hamburger:hover {
+    transform: rotate(180deg) scale(1.08);
+}
+
+  @media (max-width:1200px){
+    .pc-grid{ grid-template-columns:repeat(4,1fr); }
+    .monitor-grid{ grid-template-columns:repeat(2,1fr); }
+    .quick-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width:1100px){
+    .grid-4{ grid-template-columns:repeat(2,1fr); }
+    .grid-2{ grid-template-columns:1fr; }
+  }
+  @media (max-width:800px){
+    .sidebar{ display:none; }
+    .search-box{ display:none; }
+    .info-grid{ grid-template-columns:1fr; }
+    .pc-grid{ grid-template-columns:repeat(3,1fr); }
+    .monitor-grid{ grid-template-columns:1fr; }
+    .quick-grid{ grid-template-columns:1fr; }
+    .form-row{ grid-template-columns:1fr; }
+  }
+
+  /* =========================================================
+   LOGOUT MODAL - FINAL FIX
+========================================================= */
+
+#logoutModal {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    display: none !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: rgba(15, 23, 42, 0.55) !important;
+    backdrop-filter: blur(3px);
+
+    z-index: 99999 !important;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+/* ONLY OPEN WHEN .show IS PRESENT */
+#logoutModal.show {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* LOGOUT BOX */
+#logoutModal .logout-modal {
+    width: min(380px, calc(100% - 32px));
+    padding: 32px;
+
+    background: #ffffff !important;
+    border-radius: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 24px 60px rgba(15, 23, 42, 0.20);
+
+    transform: translateY(12px) scale(0.97);
+
+    transition: transform 0.2s ease;
+}
+
+#logoutModal.show .logout-modal {
+    transform: translateY(0) scale(1);
+}
+
+/* =========================================================
+   FIX PROFILE DROPDOWN ADMIN NAME
+   ALWAYS VISIBLE
+========================================================= */
+
+.profile-menu-header .name {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    color: #111827 !important;
+
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+
+    line-height: 1.3 !important;
+
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+.profile-menu-header > div:last-child {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.profile-menu-header .sub {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    color: #6b7280 !important;
+
+    font-size: 11.5px !important;
+}
+
+/* Never hide the profile information when sidebar is hovered */
+.sidebar:hover ~ .main .profile-menu-header .name,
+.sidebar:hover ~ .main .profile-menu-header .sub,
+.profile-menu:hover .profile-menu-header .name,
+.profile-menu:hover .profile-menu-header .sub {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #111827 !important;
+}
+
+/* =========================================================
+   LOGOUT MODAL
+========================================================= */
+
+.logout-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(3px);
+
+    z-index: 99999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+
+.logout-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.logout-modal {
+    width: min(420px, calc(100% - 40px));
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.25);
+
+    transform: translateY(10px) scale(0.97);
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.logout-overlay.show .logout-modal {
+    transform: translateY(0) scale(1);
+}
+
+
+.logout-icon {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fee2e2;
+    color: #dc2626;
+
+    font-size: 22px;
+}
+
+
+.logout-modal h2 {
+    margin: 0 0 10px;
+
+    color: #0f172a;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.logout-modal p {
+    margin: 0 auto 24px;
+
+    max-width: 340px;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.logout-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+
+.logout-cancel,
+.logout-confirm {
+    min-width: 110px;
+
+    padding: 11px 18px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        opacity 0.15s ease;
+}
+
+
+.logout-cancel {
+    border: 1px solid #e2e8f0;
+
+    background: #f8fafc;
+
+    color: #334155;
+}
+
+
+.logout-confirm {
+    border: none;
+
+    background: #dc2626;
+
+    color: #ffffff;
+}
+
+
+.logout-cancel:hover,
+.logout-confirm:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+}
+
+
+@media (max-width: 500px) {
+
+    .logout-modal {
+        padding: 24px;
+    }
+
+    .logout-actions {
+        flex-direction: column;
+    }
+
+    .logout-cancel,
+    .logout-confirm {
+        width: 100%;
+    }
+}

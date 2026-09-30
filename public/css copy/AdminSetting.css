@@ -1,0 +1,2768 @@
+/* =========================================================
+   LABTRACK SETTINGS
+   ADMIN SETTINGS PAGE
+   MATCHED WITH DASHBOARD
+========================================================= */
+
+
+/* =========================================================
+   ROOT VARIABLES
+========================================================= */
+
+:root {
+    --navy: #0b1730;
+    --navy-soft: #12213f;
+    --navy-active: #1f3a6e;
+
+    --blue: #2f6fed;
+    --blue-soft: #eaf1ff;
+
+    --green: #1fa971;
+    --green-soft: #e5f8ee;
+
+    --orange: #e8901c;
+    --orange-soft: #fdf1de;
+
+    --red: #e6493f;
+    --red-soft: #fdeae8;
+
+    --purple: #7c5cf0;
+    --purple-soft: #f0ecfe;
+
+    --ink: #111827;
+    --ink-soft: #6b7280;
+
+    --line: #eef0f4;
+
+    --bg: #f5f6f9;
+    --card: #ffffff;
+
+    --radius: 16px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   SAME BASE STRUCTURE AS DASHBOARD
+========================================================= */
+
+.sidebar {
+    width: 258px;
+    flex-shrink: 0;
+
+    background: var(--navy);
+    color: #cdd6ea;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 26px 16px;
+
+    position: sticky;
+    top: 0;
+
+    height: 100vh;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    text-align: center;
+
+    padding: 6px 8px 24px;
+
+    margin-bottom: 18px;
+
+    border-bottom: none;
+}
+
+.brand-badge img {
+    width: 150px;
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+}
+
+.brand h1 {
+    font-size: 19px;
+    font-weight: 800;
+
+    color: #fff;
+
+    letter-spacing: 0.5px;
+}
+
+.brand p {
+    font-size: 11px;
+
+    color: #8a96b3;
+
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   SIDEBAR NAV
+   IMPORTANT:
+   The nav wrapper must NOT create another flex layout.
+   This makes the Settings sidebar behave like Dashboard.
+========================================================= */
+
+.sidebar-nav {
+    display: contents !important;
+}
+
+
+/* =========================================================
+   NAV LABEL
+   EXACT DASHBOARD STYLE
+========================================================= */
+
+.sidebar .nav-label {
+    display: block;
+
+    width: auto;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    color: #5c6a8c;
+
+    margin: 18px 10px 8px !important;
+}
+
+
+/* =========================================================
+   NAVIGATION ITEMS
+========================================================= */
+
+.sidebar .nav-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    padding: 10px 12px;
+
+    border-radius: 10px;
+
+    font-size: 13.5px;
+
+    font-weight: 500;
+
+    color: #c3ccdf;
+
+    margin-bottom: 2px;
+
+    cursor: pointer;
+
+    border: none;
+
+    background: transparent;
+
+    text-align: left;
+
+    transition:
+        background 0.15s,
+        color 0.15s;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   NAV ICON
+========================================================= */
+
+.sidebar .nav-item i {
+    width: 18px;
+
+    text-align: center;
+
+    font-size: 15px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NAV HOVER
+========================================================= */
+
+.sidebar .nav-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   ACTIVE NAV
+========================================================= */
+
+.sidebar .nav-item.active {
+    background: var(--navy-active);
+
+    color: #fff;
+
+    box-shadow: inset 3px 0 0 var(--blue);
+}
+
+.sidebar .nav-item.active:hover {
+    background: var(--navy-active);
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   NAV BADGE
+========================================================= */
+
+.sidebar .nav-item .nav-badge {
+    margin-left: auto;
+
+    background: var(--red);
+
+    color: #fff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    min-width: 18px;
+
+    height: 18px;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0 5px;
+}
+
+
+/* =========================================================
+   ACCOUNT BUTTON GROUP
+   NO EXTRA SPACING
+========================================================= */
+
+.sidebar .nav-label + div {
+    margin: 0 !important;
+
+    padding: 0 !important;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+    flex: 1;
+
+    min-width: 0;
+
+    transition: width 0.35s ease;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content {
+    padding: 26px 32px 48px;
+
+    background: var(--bg);
+
+    min-height: calc(100vh - 67px);
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+    background: #fff;
+
+    border-bottom: 1px solid var(--line);
+
+    padding: 14px 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
+}
+
+.topbar-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   HAMBURGER
+========================================================= */
+
+.hamburger,
+.menu-toggle {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--bg);
+
+    color: var(--ink);
+
+    border: none;
+
+    font-size: 16px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.2s ease;
+}
+
+.hamburger:hover,
+.menu-toggle:hover {
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   TOPBAR TITLE
+========================================================= */
+
+.topbar h2 {
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: var(--ink);
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   TOPBAR RIGHT
+========================================================= */
+
+.topbar-right {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-box {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background: var(--bg);
+
+    border-radius: 10px;
+
+    padding: 9px 14px;
+
+    width: 230px;
+
+    color: var(--ink-soft);
+
+    font-size: 13px;
+}
+
+.search-box input {
+    border: none;
+
+    background: transparent;
+
+    outline: none;
+
+    font-size: 13px;
+
+    width: 100%;
+
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+.notification-wrapper,
+.notif-wrap {
+    position: relative;
+}
+
+.notification-btn,
+.bell {
+    position: relative;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--bg);
+
+    color: var(--ink-soft);
+
+    border: none;
+
+    font-size: 15px;
+}
+
+.notification-badge,
+.bell .dot {
+    position: absolute;
+
+    top: 3px;
+    right: 3px;
+
+    background: var(--red);
+
+    color: #fff;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #fff;
+}
+
+
+/* =========================================================
+   NOTIFICATION DROPDOWN
+========================================================= */
+
+.notification-menu,
+.notif-menu {
+    position: absolute;
+
+    top: calc(100% + 10px);
+
+    right: -40px;
+
+    width: 320px;
+
+    background: #fff;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 14px 34px rgba(15, 25, 60, 0.16);
+
+    border: 1px solid var(--line);
+
+    padding: 10px;
+
+    display: none;
+
+    z-index: 50;
+}
+
+.notification-menu.show,
+.notif-wrap.open .notif-menu {
+    display: block;
+}
+
+.notification-header,
+.notif-menu-title {
+    font-size: 13.5px;
+
+    font-weight: 700;
+
+    padding: 6px 8px 10px;
+
+    border-bottom: 1px solid var(--line);
+
+    margin-bottom: 6px;
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile-wrapper,
+.profile {
+    position: relative;
+}
+
+.profile-trigger {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    cursor: pointer;
+
+    padding: 4px 6px 4px 4px;
+
+    border-radius: 30px;
+
+    border: none;
+
+    background: transparent;
+
+    transition: background 0.15s;
+}
+
+.profile-trigger:hover {
+    background: var(--bg);
+}
+
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.profile-avatar,
+.avatar {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #3a5fe0,
+        #7c5cf0
+    );
+
+    color: #fff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+
+    font-size: 14px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   PROFILE TEXT
+========================================================= */
+
+.profile-text,
+.profile-name {
+    display: flex;
+
+    flex-direction: column;
+
+    line-height: 1.25;
+
+    text-align: left;
+}
+
+.profile-text strong,
+.profile-name .name {
+    font-size: 13.5px;
+
+    font-weight: 700;
+
+    color: var(--ink);
+}
+
+.profile-text span,
+.profile-name .role {
+    font-size: 11.5px;
+
+    color: var(--ink-soft);
+}
+
+
+/* =========================================================
+   PROFILE DROPDOWN
+========================================================= */
+
+.profile-dropdown,
+.profile-menu {
+    position: absolute;
+
+    top: calc(100% + 10px);
+
+    right: 0;
+
+    width: 230px;
+
+    background: #fff;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 14px 34px rgba(15, 25, 60, 0.16);
+
+    border: 1px solid var(--line);
+
+    padding: 10px;
+
+    display: none;
+
+    z-index: 50;
+}
+
+.profile-dropdown.show,
+.profile.open .profile-menu {
+    display: block;
+}
+
+.profile-dropdown-header,
+.profile-menu-header {
+    padding: 8px 8px 12px;
+
+    border-bottom: 1px solid var(--line);
+
+    margin-bottom: 6px;
+}
+
+.profile-dropdown-header strong,
+.profile-dropdown-header span {
+    display: block;
+}
+
+.profile-dropdown-header strong {
+    font-size: 13.5px;
+}
+
+.profile-dropdown-header span {
+    font-size: 11.5px;
+
+    color: var(--ink-soft);
+
+    margin-top: 2px;
+}
+
+.profile-dropdown button,
+.profile-menu-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width: 100%;
+
+    padding: 9px 10px;
+
+    border-radius: 9px;
+
+    font-size: 13.5px;
+
+    color: var(--ink);
+
+    border: none;
+
+    background: transparent;
+
+    text-align: left;
+}
+
+.profile-dropdown button:hover,
+.profile-menu-item:hover {
+    background: var(--bg);
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+    margin-bottom: 20px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    flex-wrap: wrap;
+}
+
+.page-header h1,
+.page-title h1 {
+    font-size: 22px;
+
+    font-weight: 800;
+
+    margin-bottom: 4px;
+}
+
+.page-header p,
+.page-title p {
+    font-size: 13.5px;
+
+    color: var(--ink-soft);
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.settings-card,
+.card {
+    background: var(--card);
+
+    border-radius: var(--radius);
+
+    border: 1px solid var(--line);
+
+    padding: 22px;
+
+    margin-bottom: 20px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.settings-card h2,
+.card h2 {
+    font-size: 17px;
+
+    font-weight: 700;
+
+    margin-bottom: 16px;
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.card-header,
+.profile-card-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+}
+
+.card-header h2,
+.profile-card-header h2 {
+    margin: 0;
+}
+
+.card-header p {
+    font-size: 12.5px;
+
+    color: var(--ink-soft);
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   PROFILE GRID
+========================================================= */
+
+.profile-grid,
+.info-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px 60px;
+
+    width: 100%;
+}
+
+.profile-field {
+    min-width: 0;
+}
+
+.profile-field label,
+.info-field label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: var(--ink-soft);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.03em;
+}
+
+.profile-display {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: var(--ink);
+}
+
+
+/* =========================================================
+   PROFILE EDIT INPUT
+========================================================= */
+
+.profile-edit-input {
+    width: 100%;
+
+    min-height: 40px;
+
+    padding: 9px 11px;
+
+    border: 1px solid #dbe3ef;
+
+    border-radius: 9px;
+
+    background: #f8fafc;
+
+    color: var(--ink);
+
+    font-family: inherit;
+
+    font-size: 13.5px;
+
+    outline: none;
+
+    display: none;
+
+    transition: 0.2s ease;
+}
+
+.profile-edit-input:focus {
+    background: #fff;
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(47, 111, 237, 0.10);
+}
+
+
+/* =========================================================
+   EDIT PROFILE BUTTON
+========================================================= */
+
+.edit-profile-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    height: 38px;
+
+    padding: 0 15px;
+
+    border: 1px solid #dfe3ea;
+
+    border-radius: 9px;
+
+    background: var(--bg);
+
+    color: var(--ink);
+
+    font-family: inherit;
+
+    font-size: 12.5px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.edit-profile-btn:hover {
+    background: var(--blue-soft);
+
+    border-color: var(--blue);
+
+    color: var(--blue);
+}
+
+
+/* =========================================================
+   PROFILE ACTIONS
+========================================================= */
+
+.profile-actions {
+    display: none;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.administrator-profile-card.editing
+.profile-display {
+    display: none;
+}
+
+.administrator-profile-card.editing
+.profile-edit-input {
+    display: block;
+}
+
+.administrator-profile-card.editing
+.profile-actions {
+    display: flex;
+}
+
+.administrator-profile-card.editing
+.edit-profile-btn {
+    display: none;
+}
+
+
+/* =========================================================
+   NOTIFICATION ROW
+========================================================= */
+
+.settings-row,
+.setting-row,
+.notification-row {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 16px 4px;
+
+    border-bottom: 1px solid var(--line);
+
+    background: #fff;
+}
+
+.settings-row:last-child,
+.setting-row:last-child,
+.notification-row:last-child {
+    border-bottom: none;
+}
+
+.setting-info,
+.notification-info {
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+.setting-info strong,
+.notification-title {
+    font-size: 13.5px;
+
+    font-weight: 600;
+
+    color: var(--ink);
+}
+
+.setting-info span,
+.notification-description {
+    font-size: 12px;
+
+    color: var(--ink-soft);
+
+    margin-top: 3px;
+}
+
+
+/* =========================================================
+   TOGGLE SWITCH
+========================================================= */
+
+.switch {
+    position: relative;
+
+    width: 42px;
+
+    height: 24px;
+
+    flex-shrink: 0;
+
+    display: inline-block;
+}
+
+.switch input {
+    opacity: 0;
+
+    width: 0;
+
+    height: 0;
+}
+
+.switch .slider {
+    position: absolute;
+
+    inset: 0;
+
+    cursor: pointer;
+
+    background: #dfe3ec;
+
+    border-radius: 30px;
+
+    transition: 0.2s ease;
+}
+
+.slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+
+    height: 18px;
+
+    left: 3px;
+
+    top: 3px;
+
+    background: #fff;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.20);
+
+    transition: 0.2s ease;
+}
+
+.switch input:checked + .slider {
+    background: var(--blue);
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(18px);
+}
+
+
+/* =========================================================
+   CHANGE PASSWORD
+========================================================= */
+
+.password-card {
+    padding-bottom: 28px;
+}
+
+.password-group {
+    margin-bottom: 16px;
+
+    max-width: 520px;
+}
+
+.password-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--ink);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.password-group input {
+    width: 100%;
+
+    height: 44px;
+
+    padding: 10px 13px;
+
+    border: 1px solid #dfe3ea;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #f8f9fb;
+
+    color: var(--ink);
+
+    font-family: inherit;
+
+    font-size: 13.5px;
+
+    transition: 0.15s ease;
+}
+
+.password-group input:focus {
+    border-color: var(--blue);
+
+    background: #fff;
+
+    box-shadow:
+        0 0 0 3px rgba(47, 111, 237, 0.10);
+}
+
+
+/* =========================================================
+   PASSWORD ROW
+========================================================= */
+
+.password-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   PASSWORD INPUT
+========================================================= */
+
+.password-input-wrapper {
+    position: relative;
+}
+
+.password-input-wrapper input {
+    padding-right: 45px;
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+========================================================= */
+
+.password-toggle {
+    position: absolute;
+
+    top: 50%;
+
+    right: 10px;
+
+    transform: translateY(-50%);
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    margin: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #64748b;
+
+    cursor: pointer;
+}
+
+.password-toggle:hover {
+    color: var(--blue);
+
+    background: transparent;
+}
+
+.password-toggle i {
+    font-size: 15px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   REMOVE BROWSER PASSWORD EYE
+========================================================= */
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-password-reveal-button {
+    display: none;
+}
+
+
+/* =========================================================
+   SAVE PASSWORD BUTTON
+========================================================= */
+
+.save-password-btn {
+    margin-top: 4px;
+
+    height: 44px;
+
+    padding: 0 24px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--blue);
+
+    color: #fff;
+
+    font-family: inherit;
+
+    font-size: 13.5px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+.save-password-btn:hover {
+    background: #2359c9;
+}
+
+.save-password-btn:active {
+    transform: translateY(1px);
+}
+
+
+/* =========================================================
+   NOTIFICATION PREFERENCES
+========================================================= */
+
+.notification-preferences-card {
+    width: 100%;
+}
+
+.notification-list {
+    width: 100%;
+}
+
+
+/* =========================================================
+   DATABASE NOTIFICATIONS
+========================================================= */
+
+#notificationList {
+    max-height: 380px;
+
+    overflow-y: auto;
+}
+
+.notification-read-btn {
+    border: none;
+
+    background: transparent;
+
+    color: var(--blue);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    padding: 0;
+}
+
+.notification-read-btn:hover {
+    text-decoration: underline;
+}
+
+.notification-read-btn:disabled {
+    opacity: 0.5;
+
+    cursor: default;
+}
+
+.notification-empty {
+    padding: 28px 20px;
+
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+.notif-row {
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.notif-row:hover {
+    background: #f8fafc;
+}
+
+.notif-row.unread {
+    background: #f8fafc;
+}
+
+.notif-row.unread:hover {
+    background: #f1f5f9;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn-primary {
+    background: var(--blue);
+
+    color: #fff;
+
+    border: none;
+
+    padding: 11px 20px;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 13.5px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+.btn-primary:hover {
+    background: #2359c9;
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    min-height: 42px;
+
+    padding: 10px 20px;
+
+    border: 1px solid #dbe3ef;
+
+    border-radius: 9px;
+
+    background: #f8fafc;
+
+    color: #475569;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: #eef2f7;
+
+    border-color: #cbd5e1;
+}
+
+
+/* =========================================================
+   LOGOUT OVERLAY
+========================================================= */
+
+.logout-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.45);
+}
+
+.logout-overlay.show,
+.logout-overlay.open {
+    display: flex;
+}
+
+
+/* =========================================================
+   SIDEBAR CLOSED
+========================================================= */
+
+.app.sidebar-closed .sidebar {
+    width: 0;
+
+    padding-left: 0;
+
+    padding-right: 0;
+
+    overflow: hidden;
+}
+
+.app.sidebar-closed .main {
+    width: 100%;
+}
+
+.app.sidebar-closed .hamburger {
+    transform: rotate(180deg);
+}
+
+.app.sidebar-closed .hamburger:hover {
+    transform: rotate(180deg) scale(1.08);
+}
+
+
+/* =========================================================
+   PAGE SETTINGS
+========================================================= */
+
+.main,
+.content,
+#page-settings,
+#page-settings .settings-card {
+    position: relative;
+}
+
+#page-settings {
+    z-index: 1;
+}
+
+#page-settings .settings-card {
+    z-index: 2;
+}
+
+#page-settings form,
+#page-settings input,
+#page-settings button,
+#page-settings .switch {
+    position: relative;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   RESPONSIVE - 1200
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .profile-grid,
+    .info-grid {
+        gap: 22px 30px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 900
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .profile-grid,
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .password-row {
+        grid-template-columns: 1fr;
+    }
+
+    .content {
+        padding: 22px 20px 40px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 800
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .search-box {
+        display: none;
+    }
+
+    .main {
+        width: 100%;
+    }
+
+    .content {
+        padding: 22px 20px 40px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 600
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .settings-card,
+    .card {
+        padding: 20px 16px;
+
+        border-radius: 14px;
+    }
+
+    .settings-row,
+    .setting-row,
+    .notification-row {
+        align-items: center;
+
+        gap: 12px;
+    }
+
+    .setting-info strong,
+    .notification-title {
+        font-size: 13px;
+    }
+
+    .setting-info span,
+    .notification-description {
+        font-size: 11.5px;
+    }
+
+    .switch {
+        width: 46px;
+
+        height: 28px;
+    }
+
+    .slider::before {
+        width: 22px;
+
+        height: 22px;
+    }
+
+    .switch input:checked + .slider::before {
+        transform: translateX(18px);
+    }
+
+    .topbar {
+        padding: 14px 18px;
+    }
+
+    .topbar h2 {
+        font-size: 16px;
+    }
+}
+/* =========================================================
+   LOGOUT MODAL — CLEAN FINAL FIX
+========================================================= */
+
+#logoutModal {
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    margin: 0 !important;
+    padding: 20px !important;
+
+    display: none !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    box-sizing: border-box !important;
+
+    background: rgba(15, 23, 42, 0.55) !important;
+
+    backdrop-filter: blur(4px);
+
+    z-index: 999999 !important;
+}
+
+#logoutModal.show {
+    display: flex !important;
+}
+
+/* =========================================================
+   MODAL CARD
+========================================================= */
+
+#logoutModal > .logout-modal {
+    position: static !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: min(380px, calc(100% - 32px)) !important;
+    max-width: calc(100vw - 32px) !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 32px !important;
+
+    box-sizing: border-box !important;
+
+    background: #ffffff !important;
+
+    border-radius: 22px !important;
+
+    text-align: center !important;
+
+    overflow: hidden !important;
+
+    box-shadow:
+        0 24px 60px rgba(15, 23, 42, 0.20) !important;
+
+    transform: translateY(12px) scale(0.97);
+
+    transition: transform 0.2s ease;
+}
+
+/* =========================================================
+   ICON
+========================================================= */
+
+#logoutModal > .logout-modal > .logout-icon {
+    position: static !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 60px !important;
+    height: 60px !important;
+
+    min-width: 60px !important;
+    min-height: 60px !important;
+
+    margin: 0 auto 18px !important;
+    padding: 0 !important;
+
+    box-sizing: border-box !important;
+
+    border-radius: 50% !important;
+
+    background: #fee2e2 !important;
+
+    color: #dc2626 !important;
+
+    font-size: 23px !important;
+
+    flex-shrink: 0 !important;
+
+    transform: none !important;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+#logoutModal > .logout-modal > h2 {
+    position: static !important;
+
+    display: block !important;
+
+    width: 100% !important;
+
+    margin: 0 0 10px !important;
+    padding: 0 !important;
+
+    box-sizing: border-box !important;
+
+    color: #111827 !important;
+
+    font-size: 21px !important;
+
+    font-weight: 700 !important;
+
+    line-height: 1.3 !important;
+
+    text-align: center !important;
+
+    white-space: normal !important;
+
+    transform: none !important;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+#logoutModal > .logout-modal > p {
+    position: static !important;
+
+    display: block !important;
+
+    width: 100% !important;
+
+    max-width: 340px !important;
+
+    margin: 0 auto 25px !important;
+    padding: 0 !important;
+
+    box-sizing: border-box !important;
+
+    color: #64748b !important;
+
+    font-size: 14px !important;
+
+    line-height: 1.6 !important;
+
+    text-align: center !important;
+
+    white-space: normal !important;
+
+    transform: none !important;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+#logoutModal > .logout-modal > .logout-actions {
+    position: static !important;
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    box-sizing: border-box !important;
+
+    gap: 12px !important;
+
+    transform: none !important;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+#logoutModal > .logout-modal > .logout-actions > button {
+    position: static !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    flex: 1 1 0 !important;
+
+    width: auto !important;
+    min-width: 0 !important;
+
+    height: 42px !important;
+
+    margin: 0 !important;
+    padding: 0 18px !important;
+
+    box-sizing: border-box !important;
+
+    border-radius: 9px !important;
+
+    font-family: inherit !important;
+
+    font-size: 14px !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+
+    transform: none !important;
+
+    cursor: pointer !important;
+}
+
+
+/* CANCEL */
+
+#logoutModal > .logout-modal > .logout-actions > .logout-cancel {
+    border: 1px solid #e2e8f0 !important;
+
+    background: #f8fafc !important;
+
+    color: #334155 !important;
+}
+
+
+/* LOGOUT */
+
+#logoutModal > .logout-modal > .logout-actions > .logout-confirm {
+    border: none !important;
+
+    background: #dc2626 !important;
+
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+#logoutModal > .logout-modal > .logout-actions > .logout-cancel:hover {
+    background: #f1f5f9 !important;
+}
+
+#logoutModal > .logout-modal > .logout-actions > .logout-confirm:hover {
+    background: #b91c1c !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+    #logoutModal {
+        padding: 15px !important;
+    }
+
+    #logoutModal > .logout-modal {
+        width: 100% !important;
+        min-width: 0 !important;
+
+        padding: 24px !important;
+    }
+
+    #logoutModal > .logout-modal > .logout-actions {
+        flex-direction: column !important;
+    }
+
+    #logoutModal > .logout-modal > .logout-actions > button {
+        width: 100% !important;
+        flex: none !important;
+    }
+}
+
+/* =========================================================
+   DESKTOP SIDEBAR
+========================================================= */
+
+@media (min-width: 801px) {
+
+    .sidebar {
+        display: flex !important;
+    }
+
+    .main {
+        margin-left: 0 !important;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .logout-modal {
+        padding: 24px;
+    }
+
+    .logout-actions {
+        flex-direction: column;
+    }
+
+    .logout-cancel,
+    .logout-confirm {
+        width: 100%;
+    }
+
+}
+
+/* =====================================================
+   LOGOUT MODAL
+===================================================== */
+
+.logout-overlay {
+    position: fixed !important;
+
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    background: rgba(15, 23, 42, 0.55) !important;
+
+    display: none;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    z-index: 999999 !important;
+
+    backdrop-filter: blur(3px);
+}
+
+
+.logout-modal {
+    width: 420px;
+    max-width: calc(100% - 40px);
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.20);
+}
+
+
+.logout-icon {
+    width: 60px;
+    height: 60px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fee2e2;
+
+    color: #dc2626;
+
+    font-size: 23px;
+}
+
+
+.logout-modal h2 {
+    margin: 0 0 10px;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    color: #111827;
+}
+
+
+.logout-modal p {
+    margin: 0 auto 25px;
+
+    max-width: 340px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: #64748b;
+}
+
+
+.logout-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+
+.logout-cancel,
+.logout-confirm {
+    min-width: 110px;
+
+    padding: 11px 20px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.logout-cancel {
+    background: #f8fafc;
+
+    color: #334155;
+
+    border: 1px solid #e2e8f0;
+}
+
+
+.logout-confirm {
+    background: #dc2626;
+
+    color: white;
+
+    border: none;
+}
+
+
+.logout-cancel:hover {
+    background: #f1f5f9;
+}
+
+
+.logout-confirm:hover {
+    background: #b91c1c;
+}
+
+/* =========================================
+   LOGOUT MODAL - FINAL FIX
+========================================= */
+
+.logout-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+
+    display: none !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: rgba(15, 23, 42, 0.55) !important;
+    backdrop-filter: blur(3px);
+
+    z-index: 999999 !important;
+}
+
+.logout-overlay[style*="display: flex"] {
+    display: flex !important;
+}
+
+.logout-modal {
+    position: relative;
+    z-index: 1000000;
+}
+
+.logout-cancel,
+.logout-confirm {
+    position: relative;
+    z-index: 1000001;
+    cursor: pointer !important;
+}
+
+
+@media (max-width: 500px) {
+
+    .logout-modal {
+        width: calc(100% - 30px);
+
+        padding: 24px;
+    }
+
+    .logout-actions {
+        flex-direction: column;
+    }
+
+    .logout-cancel,
+    .logout-confirm {
+        width: 100%;
+    }
+
+}
+
+/* =========================================================
+   ADMINISTRATOR PROFILE
+========================================================= */
+
+.administrator-profile-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PROFILE HEADER
+========================================================= */
+
+.administrator-profile-card .card-header {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 26px;
+}
+
+.administrator-profile-card .card-header h2 {
+    margin: 0 0 5px;
+
+    color: #0f172a;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.administrator-profile-card .card-header p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   EDIT PROFILE BUTTON
+========================================================= */
+
+.edit-profile-btn {
+    display: inline-flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    height: 40px;
+
+    padding: 0 16px;
+
+    border: 1px solid #2563eb;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+.edit-profile-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+}
+
+.edit-profile-btn i {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   PROFILE INFORMATION GRID
+========================================================= */
+
+.administrator-profile-card .info-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 50px;
+    row-gap: 24px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PROFILE FIELD
+========================================================= */
+
+.administrator-profile-card .info-field {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.administrator-profile-card .info-field > label {
+    display: block;
+
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   NORMAL DISPLAY VALUE
+========================================================= */
+
+.administrator-profile-card .profile-display {
+    min-height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    padding: 0 13px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 9px;
+
+    background: #f8fafc;
+
+    color: #0f172a;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   EDIT INPUTS
+========================================================= */
+
+.administrator-profile-card .profile-edit-input {
+    width: 100%;
+
+    height: 42px;
+
+    margin: 0;
+
+    padding: 0 13px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #0f172a;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.administrator-profile-card .profile-edit-input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+/* =========================================================
+   PROFILE ACTIONS
+========================================================= */
+
+.administrator-profile-card .profile-actions {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 26px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e2e8f0;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+========================================================= */
+
+.cancel-profile-btn {
+    height: 40px;
+
+    padding: 0 17px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.cancel-profile-btn:hover {
+    background: #f8fafc;
+
+    border-color: #94a3b8;
+}
+
+
+/* =========================================================
+   SAVE PROFILE BUTTON
+========================================================= */
+
+.save-profile-btn {
+    height: 40px;
+
+    padding: 0 18px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    border: 1px solid #2563eb;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+.save-profile-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+}
+
+.save-profile-btn i {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .administrator-profile-card .card-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .edit-profile-btn {
+        width: fit-content;
+    }
+
+    .administrator-profile-card .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .administrator-profile-card .profile-actions {
+        justify-content: stretch;
+    }
+
+    .cancel-profile-btn,
+    .save-profile-btn {
+        flex: 1;
+    }
+}
+
+/* =========================================================
+   PROFILE EDIT INPUTS
+========================================================= */
+
+.administrator-profile-card .profile-edit-input {
+    width: 100% !important;
+
+    height: 42px !important;
+
+    padding: 0 13px !important;
+
+    margin: 0 !important;
+
+    border: 1px solid #cbd5e1 !important;
+
+    border-radius: 9px !important;
+
+    background: #ffffff !important;
+
+    color: #0f172a !important;
+
+    font-family: inherit !important;
+
+    font-size: 14px !important;
+
+    outline: none !important;
+
+    box-sizing: border-box !important;
+}
+
+.administrator-profile-card .profile-edit-input:focus {
+    border-color: #2563eb !important;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10) !important;
+}
+
+.administrator-profile-card .profile-edit-input::placeholder {
+    color: #94a3b8;
+}
+
+/* =========================================================
+   CHANGE PASSWORD - CURRENT PASSWORD FULL WIDTH
+========================================================= */
+
+.change-password-card .password-full {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+}
+
+.change-password-card .password-full .password-input-wrapper {
+    width: 100% !important;
+}
+
+.change-password-card .password-full .password-input-wrapper input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* =========================================================
+   CHANGE PASSWORD - CURRENT PASSWORD FULL WIDTH
+   ========================================================= */
+
+.change-password-card #passwordForm {
+    width: 100% !important;
+    max-width: none !important;
+
+    display: block !important;
+}
+
+
+/* CURRENT PASSWORD CONTAINER */
+
+.change-password-card #passwordForm > .password-full {
+    display: block !important;
+
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    margin: 0 0 18px 0 !important;
+    padding: 0 !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* CURRENT PASSWORD WRAPPER */
+
+.change-password-card #passwordForm > .password-full > .password-input-wrapper {
+    display: block !important;
+
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* CURRENT PASSWORD INPUT */
+
+.change-password-card #passwordForm > .password-full input#currentPassword {
+    display: block !important;
+
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    height: 44px !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* =========================================================
+   NEW + CONFIRM PASSWORD
+========================================================= */
+
+.change-password-card #passwordForm > .password-row {
+    display: grid !important;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr) !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    gap: 20px !important;
+
+    margin: 0 0 20px 0 !important;
+}
+
+
+.change-password-card #passwordForm > .password-row > .password-group {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    box-sizing: border-box !important;
+}
+
+
+.change-password-card #passwordForm > .password-row
+.password-input-wrapper {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+
+.change-password-card #passwordForm > .password-row input {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    box-sizing: border-box !important;
+}

@@ -1,0 +1,174 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    /* Your school background */
+    background:url("../images/background.jpg") no-repeat center center/cover;
+    overflow:hidden;
+}
+
+/* Dark overlay */
+
+body::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.25);
+}
+
+/* Glass Login Card */
+
+
+.login-box{
+
+    position:relative;
+    width:520px;
+    padding:20px 45px 45px;
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.25),
+        rgba(255,255,255,.08)
+    );
+
+    border:1px solid rgba(255,255,255,.25);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-radius:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+    text-align:center;
+
+}
+
+.logo{
+    display: block;
+    margin: 0 auto -20px auto; /* Pulls the title closer */
+    width: 120px;
+    height: auto;
+}
+
+h1{
+    color:white;
+    font-size:23px;
+    margin-bottom:5px;
+
+}
+
+p{
+
+    color:#e8e8e8;
+    margin-bottom:30px;
+
+}
+
+.input-box{
+
+    margin-bottom:18px;
+    position:relative;
+
+}
+
+.input-box input{
+
+    width:100%;
+    padding:15px 20px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    font-size:16px;
+
+}
+
+.input-box input::placeholder{
+
+    color:#eee;
+
+}
+
+.options{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+font-size:14px;
+
+color:white;
+
+}
+
+.options a{
+
+color:#ffffff;
+text-decoration:none;
+
+}
+
+button{
+
+width:100%;
+padding:15px;
+
+border:none;
+
+border-radius:12px;
+
+background:#0058d9;
+
+color:white;
+
+font-size:18px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#0045aa;
+
+}
+
+.signup{
+
+margin-top:20px;
+color:white;
+
+}
+
+.signup a{
+
+color:#7cc8ff;
+text-decoration:none;
+
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
